@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid ">
          <div className="collapse navbar-collapse justify-content-center ">
@@ -18,8 +17,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-
-
   );
 };
+
 export default Navbar;

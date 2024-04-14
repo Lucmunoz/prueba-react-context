@@ -4,11 +4,11 @@ import IconHeart from './IconHeart';
 
 const Gallery = ({ criteria }) => {
 
-  const { data, generateData, PHOTO_URL } = useContext(MyContext)
+  const { data, generateData } = useContext(MyContext)
   
   const likePhoto = (e) => {
     const tempArray = [...data]
-    const index = data.findIndex(objeto => objeto.id === e)
+    const index = data.findIndex(objeto => objeto.id == e)
     if (tempArray[index].liked) {
       tempArray[index].liked = false
     }
@@ -53,6 +53,7 @@ const Gallery = ({ criteria }) => {
     }
   }
 
+  
   return (
     <div className='container'>
       <div className="row row-cols-5 g-3">
@@ -61,4 +62,5 @@ const Gallery = ({ criteria }) => {
     </div>
   )
 };
+
 export default Gallery;
