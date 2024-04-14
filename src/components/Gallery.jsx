@@ -5,10 +5,10 @@ import IconHeart from './IconHeart';
 const Gallery = ({ criteria }) => {
 
   const { data, generateData } = useContext(MyContext)
-  
+
   if (data.length == 0)
     return <></>
-  
+
   const likePhoto = (e) => {
     const tempArray = [...data]
     const index = data.findIndex(objeto => objeto.id === e.id)
@@ -22,21 +22,24 @@ const Gallery = ({ criteria }) => {
   }
 
   const renderPhotos = () => {
+    
+    /* criteria es un prop que se define en las vistas "Home" y "Favorites" a fin de definir que imagenes se mostrarán.
+      Cuando es true, se mostrarán las imagenes cuya key prop sea true, es decir las que tienen like.*/
     if (criteria) {
       return (
-        data.map((element) => {
-          if (element.liked) {
-            return (
-              <div key={element.id} className="col">
-                <div className="photo-container border h-100">
-                  <img src={element.src.tiny} />
-                </div>
+        data.filter(element => element.liked==criteria).map((element) => {
+          return (
+            <div key={element.id} className="col">
+              <div className="photo-container border h-100">
+                <img src={element.src.tiny} />
               </div>
-            )
-          }
+            </div>
+          );
         })
       );
+      
     }
+    /* En caso contrario, si criteria es false, se muestran todas las imágenes. */
     else {
       return (
         data.map((element) => {
@@ -56,13 +59,12 @@ const Gallery = ({ criteria }) => {
     }
   }
 
-  
   return (
     <div className='container'>
       <div className="row row-cols-5 g-3">
         {renderPhotos()}
       </div>
-    </div>
+    </div >
   )
 };
 
