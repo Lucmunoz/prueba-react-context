@@ -6,9 +6,12 @@ const Gallery = ({ criteria }) => {
 
   const { data, generateData } = useContext(MyContext)
   
+  if (data.length == 0)
+    return <></>
+  
   const likePhoto = (e) => {
     const tempArray = [...data]
-    const index = data.findIndex(objeto => objeto.id == e)
+    const index = data.findIndex(objeto => objeto.id === e.id)
     if (tempArray[index].liked) {
       tempArray[index].liked = false
     }
@@ -40,7 +43,7 @@ const Gallery = ({ criteria }) => {
           return (
             <div key={element.id} className="col">
               <div className="photo-container border h-100">
-                <div className='like-icon p-1' onClick={(() => likePhoto(element.id))}>
+                <div className='like-icon p-1' onClick={(() => likePhoto(element))}>
                   <IconHeart filled={element.liked} />
                 </div>
                 <img src={element.src.tiny} />
