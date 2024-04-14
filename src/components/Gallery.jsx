@@ -6,12 +6,9 @@ const Gallery = ({ criteria }) => {
 
   const { data, generateData, PHOTO_URL } = useContext(MyContext)
   
-
   const likePhoto = (e) => {
-
     const tempArray = [...data]
     const index = data.findIndex(objeto => objeto.id === e)
-
     if (tempArray[index].liked) {
       tempArray[index].liked = false
     }
@@ -22,7 +19,6 @@ const Gallery = ({ criteria }) => {
   }
 
   const renderPhotos = () => {
-
     if (criteria) {
       return (
         data.map((element) => {
